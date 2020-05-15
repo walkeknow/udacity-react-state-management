@@ -110,14 +110,18 @@ class App extends Component {
           return (
             <div className="entry" key={key}>
             	<h2>{value.name}</h2>
-				<p>Liked By:</p>
             	{profiles.filter(profile => profile.favoriteMovieID === key.toString()).length === 0 ? 
 					(<p>None of the current users liked this movie</p>):(
-                    	<ul>{profiles.filter(profile => profile.favoriteMovieID === key.toString()).map(profile => {
-          					const userID = profile.userID
-                  			const name = users[userID].name
-                    		return <li key={userID}>{name}</li>
-        				})}</ul>)
+                     	<div>
+                     		<p>Liked By:</p>
+                    		<ul>{profiles.filter(profile => profile.favoriteMovieID === key.toString()).map(profile => {
+          							const userID = profile.userID
+                  					const name = users[userID].name
+                    				return <li key={userID}>{name}</li>
+        						})}
+							</ul>
+						</div>
+					)
 				} 
             </div>
           )
