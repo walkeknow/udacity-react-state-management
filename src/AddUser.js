@@ -1,34 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class AddUser extends Component {
-  render() {
-    return (
-      <div>
-        <form onSubmit={event => this.props.handleSubmit(event)}>
-          <label>
-            First Name:
-          <input onChange={(event) => this.props.addUserDetails(event.target.value, 'firstName')}></input>
-          </label>
-          <br />
-          <label>
-            Last Name:
-          <input onChange={(event) => this.props.addUserDetails(event.target.value, 'lastName')}></input>
-          </label>
-          <br />
-          <label>
-            Username:
-          <input onChange={(event) => this.props.addUserDetails(event.target.value), 'username'}></input>
-          </label>
-          <br />
-          {(this.props.firstName.length || this.props.lastName.length || this.props.username.length) === 0
-          ? <button type="submit" disabled>Submit</button>
-          : <button type="submit">Submit</button>
-          }
-          
-        </form>
-      </div>
-    )
-  }
+export default function AddUser(props) {
+  return (
+    <div>
+      <form onSubmit={event => props.handleSubmit(event)}>
+        <label>
+          First Name:
+          <input value={props.firstName} onChange={(event) => props.addUserDetails(event.target.value, 'firstName')}></input>
+        </label>
+        <br />
+        <label>
+          Last Name:
+          <input value={props.lastName} onChange={(event) => props.addUserDetails(event.target.value, 'lastName')}></input>
+        </label>
+        <br />
+        <label>
+          Username:
+          <input value={props.username} onChange={(event) => props.addUserDetails(event.target.value, 'username')}></input>
+        </label>
+        <br />
+        <button type="submit" disabled={props.inputIsEmpty()}>Submit</button>
+      </form>
+    </div>
+  )
 }
-
-export default AddUser
