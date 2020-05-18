@@ -54,17 +54,19 @@
 }
 
 .message-list {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 300px;
   list-style-type: none;
-  height: 80%;
   border: 1px solid;
   text-align: left;
-  min-height: 400px;
   border-radius: 10px;
   padding-top: 1em;
 }
 
 .name {
-  font-size: 3em;
+  font-size: 2em;
 }
 
 h2 {
